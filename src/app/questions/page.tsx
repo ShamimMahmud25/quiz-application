@@ -147,7 +147,7 @@ const [prev,setPrev]=useState("")
               {/* Modal header */}
               <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  Sign in to our platform
+                  Update Questions
                 </h3>
                 <button
                   type="button"
@@ -174,7 +174,7 @@ const [prev,setPrev]=useState("")
               </div>
               {/* Modal body */}
               <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-          <h2 className="mb-4 text-xl font-bold text-white">Upload A Question</h2>
+          {/* <h2 className="mb-4 text-xl font-bold text-white">Upload A Question</h2> */}
           <form onSubmit={handleSubmit}>
             <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
               <div className="sm:col-span-2">
