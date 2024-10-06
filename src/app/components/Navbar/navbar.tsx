@@ -2,10 +2,12 @@
 import Link from 'next/link';
 import {  useEffect, useState } from 'react';
 import { useAuth } from '../AuthContext';
-
+import { usePathname } from 'next/navigation';
 const Navbar: React.FC = ({isChange}:any) => {
     const [isOpen, setIsOpen] = useState(false); // State for mobile menu
     const { isLoggedIn,login,logout,isAdmin } = useAuth();
+    const pathname = usePathname();
+    const [path,setPathName] = useState("/")
     const toggleMenu = () => {
         setIsOpen((prev) => !prev);
     };
@@ -24,8 +26,10 @@ const Navbar: React.FC = ({isChange}:any) => {
             login(email,false)
         }
         
-
+  
     },[])
+
+    
     
     const handleLogout=()=>{
         window.localStorage.removeItem('isLoggedIn');
@@ -66,6 +70,11 @@ const Navbar: React.FC = ({isChange}:any) => {
                         </li>}   
                        { !isLoggedIn && <li>
                             <Link href="/registration" className="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Registration</Link>
+                        </li>
+                       }
+
+{ isAdmin && <li>
+                            <Link href="/questions" className="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Questions</Link>
                         </li>
                        }
 
