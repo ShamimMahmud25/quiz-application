@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
-interface Question {
+export interface Question {
     question: string;
     
       a: string;
