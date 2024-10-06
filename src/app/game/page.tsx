@@ -45,11 +45,12 @@ export default function Game() {
              window.location.href='/questions'
          }
          else if(!window.localStorage.getItem('isLoggedIn')){
-            window.location.href='/login'
+            
+             window.location.href='/login'
         }
         
          else {
-             window.location.href = '/login';
+            // window.location.href = '/login';
              toast.error('You are not authorized to view this page');
  
          }
