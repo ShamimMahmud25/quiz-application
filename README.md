@@ -1,17 +1,4 @@
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Quiz Mela Application 
 
 ## Project Home
 ![Project Home](/public/quiz/home.png) 
@@ -67,3 +54,25 @@ bun dev
    - The app aims to provide an enjoyable and competitive environment, encouraging users to learn while having fun.
 
 With its blend of user engagement and administrative flexibility, **Quiz Mela** serves as a comprehensive solution for both quiz enthusiasts and administrators alike. Whether you're looking to test your knowledge or manage a quiz database, **Quiz Mela** is the perfect platform for you.
+
+
+
+### Run Instruction
+## Development Mode:
+```
+npm run dev or yarn dev
+
+```
+## Build for Production:
+```
+npm run build or yarn build
+
+```
+### Start Production Server:
+```
+npm start or yarn start
+```
+### Run Linting (if you have ESLint configured):
+```
+npm run lint or yarn lint
+```
