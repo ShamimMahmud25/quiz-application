@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import { use } from 'react';
-import Swal from 'sweetalert2';
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
+import { useAuth } from "./AuthContext";
 
 // Define the interface for the subject prop
 interface Subject {
@@ -18,25 +18,27 @@ interface SubjectCardProps {
 
 const SubjectCard: React.FC<SubjectCardProps> = ({ subject }) => {
   const router = useRouter();
+  const { isAdmin } = useAuth();
 
   const handleClick = () => {
-
-  if(window.localStorage.getItem('isLoggedIn'))
-  router.push('/game')
-  else {
-    Swal.fire({
-      title: "Warning!",
-      text: "Please login to play the game",
-      icon: "warning",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        router.push('/login')
+    if (window.localStorage.getItem("isLoggedIn")) {
+      if (isAdmin) {
+        router.push("/questions");
+      } else {
+        router.push("/game");
       }
-    })
-  }
+    } else {
+      Swal.fire({
+        title: "Warning!",
+        text: "Please login to play the game",
+        icon: "warning",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          router.push("/login");
+        }
+      });
+    }
   };
-
-  
 
   return (
     <div
@@ -53,7 +55,6 @@ const SubjectCard: React.FC<SubjectCardProps> = ({ subject }) => {
           className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
         />
       </div>
-
       {/* Gradient Background for Text */}
       <div className="p-4 bg-gradient-to-b from-white to-gray-50">
         {/* Subject Name */}
@@ -65,7 +66,6 @@ const SubjectCard: React.FC<SubjectCardProps> = ({ subject }) => {
           {subject.questions.length} Questions
         </p>
       </div>
-
       {/* Decoration Line */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 to-green-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
     </div>

@@ -1,16 +1,14 @@
-'use client'
+"use client";
 
-
-import { useState } from 'react';
-import Swal from 'sweetalert2';
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const SignUpForm = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [acceptedTerms, setAcceptedTerms] = useState<boolean>(false);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
-
 
   const handleAdmin = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsAdmin(e.target.checked);
@@ -18,15 +16,13 @@ const SignUpForm = () => {
       title: "Warning!",
       text: "Dummy Permission",
       icon: "warning",
-    }).then((res)=>{
-      if(res.isConfirmed){
+    }).then((res) => {
+      if (res.isConfirmed) {
         setIsAdmin(e.target.checked);
-      }
-      else{
+      } else {
         setIsAdmin(false);
       }
-    })
-    
+    });
   };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,35 +35,34 @@ const SignUpForm = () => {
         icon: "error",
       });
       return;
-    }
-    else {
+    } else {
       Swal.fire({
         title: "Success!",
         text: "Congratulations! Your account has been created.",
         icon: "success",
       }).then((result) => {
         if (result.isConfirmed) {
-          
-          window.location.href = '/login';
+          window.location.href = "/login";
         }
-      })
+      });
     }
 
     // Save the form data in localStorage
-    localStorage.setItem('email', email);
-    localStorage.setItem('password', password); // Storing password in localStorage is generally not recommended!
-    localStorage.setItem('acceptedTerms', JSON.stringify(acceptedTerms));
-    localStorage.setItem('user', JSON.stringify({ email, isAdmin }));
+    localStorage.setItem("email", email);
+    localStorage.setItem("password", password); // Storing password in localStorage is generally not recommended!
+    localStorage.setItem("acceptedTerms", JSON.stringify(acceptedTerms));
+    localStorage.setItem("user", JSON.stringify({ email, isAdmin }));
     // Example action upon successful form submission
-   
   };
 
   return (
     <section className="bg-gray-900">
       <div className="flex flex-col items-center bg-gray-900 justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <a href="/" className="flex items-center mb-6 text-2xl font-semibold text-white">
-         
-        কুইজ মেলা
+        <a
+          href="/"
+          className="flex items-center mb-6 text-2xl font-semibold text-white"
+        >
+          কুইজ মেলা
         </a>
         <div className="w-full rounded-lg bg-slate-800 shadow :border md:mt-0 sm:max-w-md xl:p-0 :bg-gray-800 :border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -111,7 +106,7 @@ const SignUpForm = () => {
                   required
                 />
               </div>
-              
+
               <div>
                 <label
                   htmlFor="confirm-password"
@@ -138,16 +133,12 @@ const SignUpForm = () => {
                     type="checkbox"
                     className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 :bg-gray-700 :border-gray-600 :focus:ring-primary-600 :ring-offset-gray-800"
                     checked={isAdmin}
-                    onChange={(e)=>handleAdmin(e)}
+                    onChange={(e) => handleAdmin(e)}
                   />
                 </div>
                 <div className="ml-3 text-sm">
-                  <label
-                    htmlFor="terms"
-                    className="font-light text-gray-300"
-                  >
-                    I wanna be  an admin
-                    
+                  <label htmlFor="terms" className="font-light text-gray-300">
+                    I wanna be an admin
                   </label>
                 </div>
               </div>
@@ -164,10 +155,7 @@ const SignUpForm = () => {
                   />
                 </div>
                 <div className="ml-3 text-sm">
-                  <label
-                    htmlFor="terms"
-                    className="font-light text-gray-300"
-                  >
+                  <label htmlFor="terms" className="font-light text-gray-300">
                     I accept the{" "}
                     <a
                       className="font-medium text-primary-600 hover:underline :text-primary-500"

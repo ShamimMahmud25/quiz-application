@@ -14,7 +14,6 @@ const QuestionsTable: React.FC = () => {
     let user = window.localStorage.getItem("user");
     let email = window.localStorage.getItem("isLoggedIn");
     let loggedInUser = JSON.parse(user || "{}");
-
     if (loggedInUser?.isAdmin === true && email === loggedInUser?.email) {
       console.log("You are authorized to view this page");
     } else {
@@ -313,7 +312,6 @@ const QuestionsTable: React.FC = () => {
           </div>
         </div>
       )}
-
       <table className="w-11/12 mx-auto text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
